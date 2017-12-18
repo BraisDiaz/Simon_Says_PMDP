@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="org.danielcastelao.bdiaznunez.simon_dice.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="8dp">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtBienvenida"
+        android:layout_width="345dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="51dp"
+        android:layout_weight="1"
+        android:contentDescription="A welcome label"
+        android:fontFamily="casual"
+        android:text="WelCoMe To SiMoN SaYs, \n HaVe A NiCe GaMe!!!"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/AzulPastel"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="350dp"
+        android:layout_height="362dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="189dp"
+        tools:layout_editor_absoluteX="5dp">
+
+        <TextView
+            android:id="@+id/round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:contentDescription="Round counter label"
+            android:fontFamily="casual"
+            android:text="ROUND"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/AzulPastel"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="267dp"
+            tools:layout_editor_absoluteY="129dp" />
+
+        <Button
+            android:id="@+id/btnRed"
+            android:layout_width="117dp"
+            android:layout_height="89dp"
+            android:layout_column="1"
+            android:layout_row="2"
+            android:background="@color/Rojo"
+            android:contentDescription="The red button" />
+
+        <Button
+            android:id="@+id/btnBlue"
+            android:layout_width="117dp"
+            android:layout_height="89dp"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:background="@color/Azul"
+            android:contentDescription="The blue button" />
+
+        <TextView
+            android:id="@+id/txtPuntos"
+            android:layout_width="67dp"
+            android:layout_height="21dp"
+            android:layout_marginLeft="25dp"
+            android:contentDescription="Scoreboard label"
+            android:fontFamily="casual"
+            android:text="SCORE:"
+            android:textColor="@color/AzulPastel"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="308dp" />
+
+        <Button
+            android:id="@+id/btnYellow"
+            android:layout_width="117dp"
+            android:layout_height="89dp"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@color/Amarillo"
+            android:contentDescription="The yellow button" />
+
+        <Button
+            android:id="@+id/btnGreen"
+            android:layout_width="117dp"
+            android:layout_height="89dp"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:background="@color/Verde"
+            android:contentDescription="The green button" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_marginLeft="15dp"
+            android:layout_row="1"
+            android:background="@android:color/background_dark"
+            android:contentDescription="Starts a new secuence of colors"
+            android:fontFamily="casual"
+            android:text="START"
+            android:textColor="@android:color/background_light" />
+
+        <Button
+            android:id="@+id/btnNew"
+            android:layout_width="105dp"
+            android:layout_height="59dp"
+            android:layout_column="0"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_row="2"
+            android:background="@android:color/background_light"
+            android:contentDescription="This button starts a new game"
+            android:elevation="15dp"
+            android:fontFamily="casual"
+            android:text="NEW GAME"
+            android:textColor="@color/AzulPastel"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="129dp" />
+    </GridLayout>
+
+</android.support.constraint.ConstraintLayout>
