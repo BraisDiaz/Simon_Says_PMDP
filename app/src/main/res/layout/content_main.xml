@@ -11,9 +11,10 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/simon"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
     </LinearLayout>
 
@@ -23,14 +24,14 @@
         android:layout_height="0dp"
         android:layout_marginEnd="6dp"
         android:layout_marginRight="7dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:contentDescription="A welcome label"
         android:fontFamily="casual"
         android:text="WelCoMe To SiMoN SaYs, \n HaVe A NiCe GaMe!!!"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/AzulPastel"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintRight_toRightOf="parent"
@@ -42,10 +43,12 @@
         android:layout_height="362dp"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="5dp"
+        android:background="@drawable/simon"
+        android:backgroundTint="#55000000"
+        android:elevation="2dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="189dp"
-        tools:layout_editor_absoluteX="5dp">
+        app:layout_constraintRight_toRightOf="parent">
 
         <TextView
             android:id="@+id/round"
@@ -57,7 +60,7 @@
             android:text="ROUND"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:textColor="@color/AzulPastel"
+            android:textColor="@android:color/background_light"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="267dp"
@@ -89,7 +92,7 @@
             android:contentDescription="Scoreboard label"
             android:fontFamily="casual"
             android:text="SCORE:"
-            android:textColor="@color/AzulPastel"
+            android:textColor="@android:color/background_light"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="16dp"
@@ -124,7 +127,9 @@
             android:contentDescription="Starts a new secuence of colors"
             android:fontFamily="casual"
             android:text="START"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnNew"

@@ -1,11 +1,8 @@
 package org.danielcastelao.bdiaznunez.simon_dice;
 
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,13 +10,12 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    int roundCounter = 0 ;
-    int secuencePosition = 0;
     int checkPosition =0;
+    int roundCounter = 0 ;
     int [] colors = new int[50];
-    boolean trueOrNot = false;
+    int secuencePosition = 0;
     int score = 0;
-    int highScore = 0;
+    boolean trueOrNot = false;
 
     //Declaration of buttons:
     public Button btnBlue;
@@ -27,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     public Button btnYellow;
     public Button btnRed;
     public Button btnStart; //botonCentral
-    public TextView text;
-    public Button buttons[] = new Button[4];
+
+    public TextView welcomeText;
 
     //Scoreboards:
     TextView score_value;
@@ -50,12 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         score_value.setText("" + score);
 
-        buttons[0] = btnBlue;
-        buttons[1] = btnGreen;
-        buttons[2] = btnYellow;
-        buttons[3] = btnRed;
-
-        text = (TextView) findViewById(R.id.txtBienvenida);
+        welcomeText = (TextView) findViewById(R.id.txtBienvenida);
 
         btnGreen.setBackgroundColor(Color.GREEN);
         btnGreen.setAlpha(0.5f);
@@ -161,7 +152,9 @@ public class MainActivity extends AppCompatActivity {
 
             score_value.setText("SCORE: " + score);
 
-            btnStart.setEnabled(true);
+            Button startButton = (Button) findViewById(R.id.btnStart);
+
+            startButton.setEnabled(true);
 
             TextView t = (TextView) findViewById(R.id.round);
 
@@ -169,13 +162,14 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-         public void updateBackground(int color){
+    //Changes the background color of the central button
+    public void updateBackground(int color){
 
              View background=findViewById(R.id.btnStart);
 
              background.setBackgroundColor(color);
 
-        }
+    }
 
     /*Uses the start button to light it and make a color secuence that the player should repeat correctly.
     To do that is to important the alpha property, to light the start button
@@ -199,11 +193,11 @@ public class MainActivity extends AppCompatActivity {
 
                         updateBackground(colors[secuencePosition]);
 
-                        background.setAlpha(0.3f);
+                        background.setAlpha(0.2f);
 
                     }
 
-                }, (i+1) * 600);
+                }, (i+1) * 500);
 
 
                 background.postDelayed(new Runnable() {
@@ -212,11 +206,11 @@ public class MainActivity extends AppCompatActivity {
 
                     public void run() {
 
-                        background.setAlpha(0.6f);
+                        background.setAlpha(0.5f);
 
                     }
 
-                },(600*(i+1))+100);
+                },(500*(i+1))+100);
 
                 background.postDelayed(new Runnable() {
 
@@ -228,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-                },(600*(i+1))+190);
+                },(500*(i+1))+150);
 
 
                 background.postDelayed(new Runnable() {
@@ -237,11 +231,11 @@ public class MainActivity extends AppCompatActivity {
 
                     public void run() {
 
-                        background.setAlpha(1.0f);
+                        background.setAlpha(1f);
 
                     }
 
-                },(600*(i+1))+270);
+                },(500*(i+1))+250);
 
                 background.postDelayed(new Runnable() {
 
@@ -261,11 +255,11 @@ public class MainActivity extends AppCompatActivity {
 
                     public void run() {
 
-                        background.setAlpha(0.6f);
+                        background.setAlpha(0.5f);
 
                     }
 
-                },(600*(i+1))+400);
+                },(500*(i+1))+400);
 
 
                 background.postDelayed(new Runnable() {
@@ -274,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
 
                     public void run() {
 
-                        background.setAlpha(0.3f);
+                        background.setAlpha(0.2f);
 
                         secuencePosition++;
 
@@ -305,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-        },(roundCounter +1)*600);
+        },(roundCounter +1)*500);
 
         Button startButton = (Button)findViewById(R.id.btnStart);
         startButton.setEnabled(false);
@@ -318,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
 
         Random rd=new Random();
 
-        int[] possibleColors = {Color.RED,Color.BLUE,Color.GREEN,Color.YELLOW};
+        int[] possibleColors ={Color.RED,Color.BLUE,Color.GREEN,Color.YELLOW};
 
         colors[roundCounter] = possibleColors[rd.nextInt(4)];
 
@@ -335,9 +329,9 @@ public class MainActivity extends AppCompatActivity {
         checkPosition =0;
     }
 
-    public void colorHighlight(Button btn) {
+    public void colorHighlight(Button boton) {
 
-        final Button b = btn;
+        final Button b = boton;
 
         b.postDelayed(new Runnable() {
 
@@ -397,14 +391,26 @@ public class MainActivity extends AppCompatActivity {
 
         final Button loseMessage=(Button)findViewById(R.id.btnStart);
 
-        if(color== colors[checkPosition]){
+        if(color == colors[checkPosition]){
 
-            score += 10;
-            score_value.setText("SCORE: "+ score);
             checkPosition++;
+            score += 10;
+            score_value.setText("SCORE: " + score);
 
         }else{
             trueOrNot =false;
+        }
+
+        if(checkPosition==roundCounter&&trueOrNot){
+
+            score += roundCounter*2;
+            score_value.setText("SCORE: " + score);
+            startButton.setEnabled(true);
+            btnYellow.setEnabled(false);
+            btnBlue.setEnabled(false);
+            btnGreen.setEnabled(false);
+            btnRed.setEnabled(false);
+
         }
 
         if(!trueOrNot && roundCounter >0){
@@ -431,13 +437,13 @@ public class MainActivity extends AppCompatActivity {
 
                     loseMessage.setText("YOU LOSE");
 
-                    loseMessage.setScaleX(4f);
+                    loseMessage.setScaleX(3f);
 
-                    loseMessage.setScaleY(4f);
+                    loseMessage.setScaleY(3f);
 
                 }
 
-            },70);
+            },50);
 
             loseMessage.postDelayed(new Runnable() {
 
@@ -479,27 +485,5 @@ public class MainActivity extends AppCompatActivity {
 
             startButton.setEnabled(true);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
